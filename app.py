@@ -239,7 +239,7 @@ with st.sidebar:
 
     st.markdown('<div class="nav-header">Navigation</div>', unsafe_allow_html=True)
 
-    PAGES = ["🏠  Vue Générale", "🌍  Analyse par Équipe", "🤖  Clustering ML", "🎯  Prédiction ML", "⚡  Simulateur"]
+    PAGES = ["  Vue Générale", "  Analyse par Équipe", "  Clustering ML", "  Prédiction ML", "  Simulateur"]
     if "page" not in st.session_state:
         st.session_state["page"] = PAGES[0]
 
