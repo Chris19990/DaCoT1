@@ -934,7 +934,7 @@ elif page == "  Prédiction ML":
 # ══════════════════════════════════════════════════════════════
 # PAGE 5 — SIMULATEUR
 # ══════════════════════════════════════════════════════════════
-elif page == "⚡  Simulateur":
+elif page == "  Simulateur":
     st.markdown(f"""
     <h1 style="color:{TEXT_H}; font-size: 1.6rem; font-weight: 700; margin-bottom: 4px;">
       Simulateur <span style="color:{GOLD};">·</span> Prédire un Match
