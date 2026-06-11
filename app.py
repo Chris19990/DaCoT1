@@ -303,7 +303,7 @@ def apply_layout(fig, title="", h=None):
 # ══════════════════════════════════════════════════════════════
 # PAGE 1 — VUE GÉNÉRALE
 # ══════════════════════════════════════════════════════════════
-if page == "🏠  Vue Générale":
+if page == "  Vue Générale":
     st.markdown(f"""
     <div style="margin-bottom: 24px;">
       <h1 style="color:{TEXT_H}; font-size: 1.6rem; font-weight: 700; margin: 0;">
@@ -469,7 +469,7 @@ if page == "🏠  Vue Générale":
 # ══════════════════════════════════════════════════════════════
 # PAGE 2 — ANALYSE PAR ÉQUIPE
 # ══════════════════════════════════════════════════════════════
-elif page == "🌍  Analyse par Équipe":
+elif page == "  Analyse par Équipe":
     st.markdown(f"""
     <h1 style="color:{TEXT_H}; font-size: 1.6rem; font-weight: 700; margin-bottom: 4px;">
       Analyse par Équipe <span style="color:{GOLD};">·</span> Ranking & Profils
@@ -651,7 +651,7 @@ elif page == "🌍  Analyse par Équipe":
 # ══════════════════════════════════════════════════════════════
 # PAGE 3 — CLUSTERING ML
 # ══════════════════════════════════════════════════════════════
-elif page == "🤖  Clustering ML":
+elif page == "  Clustering ML":
     st.markdown(f"""
     <h1 style="color:{TEXT_H}; font-size: 1.6rem; font-weight: 700; margin-bottom: 4px;">
       Clustering ML <span style="color:{GOLD};">·</span> K-Means · Profils de Jeu
@@ -790,7 +790,7 @@ elif page == "🤖  Clustering ML":
 # ══════════════════════════════════════════════════════════════
 # PAGE 4 — PRÉDICTION ML
 # ══════════════════════════════════════════════════════════════
-elif page == "🎯  Prédiction ML":
+elif page == "  Prédiction ML":
     st.markdown(f"""
     <h1 style="color:{TEXT_H}; font-size: 1.6rem; font-weight: 700; margin-bottom: 4px;">
       Prédiction ML <span style="color:{GOLD};">·</span> Régression Logistique & HGB
