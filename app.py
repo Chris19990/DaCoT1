@@ -1,4 +1,3 @@
-
 """
 ⚽ World Cup Intelligence Platform — v2
 ML Engineer · Analyse historique FIFA 1930–2014
@@ -155,6 +154,48 @@ st.markdown(f"""
   footer {{ visibility:hidden; }}
   [data-testid="stSidebar"] {{ display:none; }}
   .block-container {{ padding-top:0 !important; }}
+ 
+  /* ── Radio stylisé en boutons pill ── */
+  div[data-testid="stRadio"] > div {{
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 6px !important;
+    flex-wrap: nowrap !important;
+  }}
+  div[data-testid="stRadio"] label {{
+    background: none !important;
+    border: 1px solid {BORDER} !important;
+    border-radius: 20px !important;
+    padding: 5px 14px !important;
+    font-size: 0.78rem !important;
+    color: {TEXT} !important;
+    cursor: pointer !important;
+    font-family: 'Inter', sans-serif !important;
+    transition: all 0.15s !important;
+    white-space: nowrap !important;
+  }}
+  div[data-testid="stRadio"] label:hover {{
+    background: rgba(240,192,64,0.08) !important;
+    border-color: {GOLD} !important;
+    color: {GOLD} !important;
+  }}
+  div[data-testid="stRadio"] label[data-baseweb="radio"] {{
+    background: none !important;
+  }}
+  /* Option sélectionnée */
+  div[data-testid="stRadio"] label:has(input:checked) {{
+    background: rgba(240,192,64,0.12) !important;
+    border-color: {GOLD} !important;
+    color: {GOLD} !important;
+    font-weight: 600 !important;
+  }}
+  /* Cacher le cercle radio */
+  div[data-testid="stRadio"] input[type="radio"] {{
+    display: none !important;
+  }}
+  div[data-testid="stRadio"] > label {{
+    display: none !important;
+  }}
 </style>
 """, unsafe_allow_html=True)
  
@@ -183,43 +224,32 @@ FEAT_LABELS = [
 ]
  
  
-# ══════════════════════════════════════════════════════════════
-# SESSION STATE — page active
-# ══════════════════════════════════════════════════════════════
 PAGES = ["🏠 Vue Générale", "🌍 Équipes", "🤖 Clustering", "🎯 Prédiction", "⚡ Simulateur"]
-if "page" not in st.session_state:
-    st.session_state.page = PAGES[0]
- 
  
 # ══════════════════════════════════════════════════════════════
-# TOP NAV BAR — boutons HTML + callbacks Streamlit
+# TOP NAV — st.radio lié au session_state (navigation stable)
 # ══════════════════════════════════════════════════════════════
-cols_nav = st.columns([3] + [1]*5)
-with cols_nav[0]:
-    st.markdown("""
-    <div style="display:flex;align-items:center;gap:10px;padding:6px 0;">
+col_brand, col_nav = st.columns([2, 5])
+with col_brand:
+    st.markdown(f"""
+    <div style="display:flex;align-items:center;gap:10px;padding:8px 0;">
       <span style="font-size:1.4rem;">⚽</span>
       <div>
-        <div style="font-size:0.95rem;font-weight:700;color:#F0F2F6;">WORLD CUP INTELLIGENCE</div>
-        <div style="font-size:0.62rem;color:#4A5A7A;letter-spacing:0.08em;">1930–2014 · ML PLATFORM</div>
+        <div style="font-size:0.9rem;font-weight:700;color:{TEXT_H};">WORLD CUP INTELLIGENCE</div>
+        <div style="font-size:0.6rem;color:#4A5A7A;letter-spacing:0.08em;">1930–2014 · ML PLATFORM</div>
       </div>
     </div>""", unsafe_allow_html=True)
  
-for i, (col, label) in enumerate(zip(cols_nav[1:], PAGES)):
-    with col:
-        is_active = st.session_state.page == label
-        style = (f"background:rgba(240,192,64,0.12);border:1px solid {GOLD};"
-                 f"color:{GOLD};font-weight:600;" if is_active else
-                 f"background:none;border:1px solid {BORDER};color:{TEXT};")
-        if st.button(label, key=f"nav_{i}",
-                     use_container_width=True,
-                     help=label):
-            st.session_state.page = label
-            st.rerun()
+with col_nav:
+    page = st.radio(
+        "Navigation",
+        PAGES,
+        horizontal=True,
+        label_visibility="collapsed",
+        key="page"
+    )
  
 st.markdown(f'<hr style="border-color:{BORDER};margin:0 0 24px;">', unsafe_allow_html=True)
- 
-page = st.session_state.page
  
  
 # ══════════════════════════════════════════════════════════════
